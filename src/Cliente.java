@@ -71,4 +71,12 @@ public class Cliente extends Persona {
     }
 
 
+    //GETTERS && SETTERS
+
+
+    public Forfait getForfait() {
+        return forfait;
+    }
+
+
 }

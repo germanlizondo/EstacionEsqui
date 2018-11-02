@@ -1,5 +1,3 @@
-package infraestructura;
-
 public class Pista {
     private String color;
     private int longitud;

@@ -1,5 +1,4 @@
-package infraestructura;
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class Telesilla {
     private int largo;
@@ -8,7 +7,7 @@ public class Telesilla {
     private int consumo;
     private boolean encendido;
 
-  //  private ArrayList<Persona> personasabordo;
+    private ArrayList<Persona> personasabordo = new ArrayList<Persona>();
 
     public Telesilla(int largo, int velocidad, int capacidad, int consumo) {
         this.largo = largo;
@@ -36,7 +35,9 @@ public class Telesilla {
 
   }
 
-
+public void descargarPersonas(){
+        this.personasabordo = new ArrayList<Persona>();
+}
 
 
 
@@ -87,13 +88,16 @@ public class Telesilla {
     public void setEncendido(boolean encendido) {
         this.encendido = encendido;
     }
-/*
+
     public ArrayList<Persona> getPersonasabordo() {
         return personasabordo;
     }
 
-    public void setPersonasabordo(ArrayList<Persona> personasabordo) {
-        this.personasabordo = personasabordo;
+    public void setPersonasabordo(Persona persona) {
+
+        if (this.personasabordo.size() >= this.capacidad) System.out.println("!Telesilla lleno!");
+        else this.personasabordo.add(persona);
+
     }
-    */
+
 }

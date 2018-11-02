@@ -21,6 +21,13 @@ public class Forfait {
         this.seguro = seguro;
     }
 
+    @Override
+    public String toString() {
+
+        if(!seguro) return "PRECIO: "+this.precio+"€ | "+this.fecha+" | SEGURO : NO";
+        else return "PRECIO: "+this.precio+"€ | "+this.fecha+" | SEGURO : SI | DNI: "+this.dni;
+
+    }
 
     //GETTERS && SETTERS
 

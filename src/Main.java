@@ -4,7 +4,8 @@ public class Main {
         System.out.println("Hello World!");
 
        Cliente cliente = new Cliente("german");
-
        cliente.comprarForfait();
+        System.out.println( cliente.getForfait());
+
     }
 }
