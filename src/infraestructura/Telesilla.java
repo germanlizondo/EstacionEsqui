@@ -1,3 +1,7 @@
+package infraestructura;
+
+import administracion.Persona;
+
 import java.util.ArrayList;
 
 public class Telesilla {
@@ -95,7 +99,7 @@ public void descargarPersonas(){
 
     public void setPersonasabordo(Persona persona) {
 
-        if (this.personasabordo.size() >= this.capacidad) System.out.println("!Telesilla lleno!");
+        if (this.personasabordo.size() >= this.capacidad) System.out.println("!infraestructura.Telesilla lleno!");
         else this.personasabordo.add(persona);
 
     }

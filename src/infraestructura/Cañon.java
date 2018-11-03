@@ -1,3 +1,5 @@
+package infraestructura;
+
 public class Cañon {
     private int potencia;
     private boolean encendido;

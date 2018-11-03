@@ -1,3 +1,5 @@
+package administracion;
+
 import java.util.*;
 
 public class Forfait {
@@ -5,8 +7,9 @@ public class Forfait {
     private String fecha;
     private String dni;
     private boolean seguro;
+    private Tipo tipo;
 
-    public Forfait(int precio, boolean seguro) {
+    public Forfait(int precio, boolean seguro,String abreviatura) {
 
         Calendar calendario = new GregorianCalendar();
         int año = calendario.get(Calendar.YEAR);
@@ -19,13 +22,25 @@ public class Forfait {
         this.precio = precio;
         this.fecha = dia + "/" + (mes+1) + "/" + año;
         this.seguro = seguro;
+        this.tipo = Enum.valueOf(Tipo.class,abreviatura.toUpperCase());
     }
 
     @Override
     public String toString() {
 
-        if(!seguro) return "PRECIO: "+this.precio+"€ | "+this.fecha+" | SEGURO : NO";
-        else return "PRECIO: "+this.precio+"€ | "+this.fecha+" | SEGURO : SI | DNI: "+this.dni;
+        if(!seguro) return "TIPO: "+this.tipo+" | PRECIO: "+this.precio+"€ | "+this.fecha+" | SEGURO : NO";
+        else return "TIPO: "+this.tipo+" | PRECIO: "+this.precio+"€ | "+this.fecha+" | SEGURO : SI | DNI: "+this.dni;
+
+    }
+
+
+    public boolean validarDni(String dni){
+
+        if (dni.length() != 9 || Character.isLetter(dni.charAt(8)) == false){
+            return false;
+        }
+        else return true;
+
 
     }
 

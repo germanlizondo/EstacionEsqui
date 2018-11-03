@@ -1,3 +1,5 @@
+package administracion;
+
 import java.util.Scanner;
 
 public class Cliente extends Persona {
@@ -13,7 +15,7 @@ public class Cliente extends Persona {
         String seguro = "";
         boolean exit = false;
         while (!exit){
-            System.out.println("¿Que Forfait desea comprar?" +
+            System.out.println("¿Que administracion.Forfait desea comprar?" +
                     "\n "
                     + "1- Adulto - 50E"+
                     "\n "
@@ -26,17 +28,17 @@ public class Cliente extends Persona {
             int x = scanner.nextInt();
             switch (x){
                 case 1:
-                    this.forfait = new Forfait(50,false);
+                    this.forfait = new Forfait(50,false,"adulto");
                     System.out.println("1");
                     exit = true;
                     break;
                 case 2:
-                    this.forfait = new Forfait(25,false);
+                    this.forfait = new Forfait(25,false,"estudiante");
                     System.out.println("2");
                     exit = true;
                     break;
                 case 3:
-                    this.forfait = new Forfait(15,false);
+                    this.forfait = new Forfait(15,false,"menor");
                     System.out.println("3");
                     exit = true;
                     break;
@@ -51,14 +53,20 @@ public class Cliente extends Persona {
 
 
         do {
-            System.out.println("¿Quiere Seguro?y/n");
+            System.out.println("¿Quiere Seguro? y/n");
             seguro = scanner.next();
         }while (!seguro.equals("y") && !seguro.equals("n") );
 
 
         if(seguro.equals("y")){
-            System.out.println("Escriba el DNI");
-            String dni = scanner.next();
+            String dni = "";
+            do {
+                System.out.println("Escriba el DNI");
+               dni = scanner.next().toUpperCase();
+                this.forfait.validarDni(dni);
+
+            }while (!this.forfait.validarDni(dni));
+
 
             this.forfait.setDni(dni);
             super.setDNI(dni);

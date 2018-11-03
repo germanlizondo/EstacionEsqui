@@ -1,4 +1,6 @@
-public class Persona {
+package administracion;
+
+public abstract class Persona {
 
     private String nom;
     private String DNI;
