@@ -13,7 +13,6 @@ public class Main {
         //Final Principio
 
 
-
    //ADMINISTRADOR
 
         Scanner scanadmin = new Scanner(System.in);
@@ -40,9 +39,18 @@ public class Main {
                break;
            case 2:
 
+               for (Pista i : pistas
+               ) {
+                   if(i.isAbierta())   System.out.println(i);
+
+               }
                break;
            case 3:
+               for (Pista i : pistas
+               ) {
+                   if(!i.isAbierta())   System.out.println(i);
 
+               }
                break;
            case 4:
                System.out.println("NOMBRE: ");

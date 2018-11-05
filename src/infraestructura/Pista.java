@@ -24,10 +24,14 @@ public class Pista {
 
     @Override
     public String toString() {
+        String estado = "";
+        if (this.isAbierta()) estado = "Abierta";
+        else estado = "Cerrada";
         return "NOMBRE : " + name  +
                 " | COLOR : " + color  +
                 " | LONGITUD: " + longitud + "km"+
-                " | NIVEL DE NIEVE: " + nivelnieve +"%"
+                " | NIVEL DE NIEVE: " + nivelnieve +"%"+
+        " | ESTADO: " + estado
                 ;
     }
 
