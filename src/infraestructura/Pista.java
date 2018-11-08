@@ -79,4 +79,16 @@ public class Pista {
     public void setAbierta(boolean abierta) {
         this.abierta = abierta;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCañones(ArrayList<Cañon> cañones) {
+        this.cañones = cañones;
+    }
 }
