@@ -43,14 +43,19 @@ public void descargarPersonas(){
         this.personasabordo = new ArrayList<Persona>();
 }
 
+    @Override
+    public String toString() {
+        return "Telesilla{" +
+                "largo=" + largo +
+                ", velocidad=" + velocidad +
+                ", capacidad=" + capacidad +
+                ", consumo=" + consumo +
+                ", encendido=" + encendido +
+                '}';
+    }
 
 
-
-
-
-
-
-    //GETTERS && SETTERS
+//GETTERS && SETTERS
 
 
     public int getLargo() {

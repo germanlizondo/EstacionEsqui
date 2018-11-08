@@ -1,6 +1,8 @@
 import administracion.Cliente;
+import administracion.Tecnico;
 import infraestructura.Cañon;
 import infraestructura.Pista;
+import infraestructura.Telesilla;
 
 import java.util.*;
 public class Main {
@@ -14,7 +16,12 @@ public class Main {
         ArrayList<Pista> pistas = new ArrayList<Pista>();
         //Final Principio
 
+        //Tecnico
 
+        Tecnico tecnico1 = new Tecnico("German",123456,888483);
+        Telesilla telesilla1 = new Telesilla(1,2,3,3);
+        tecnico1.setTelesillas(telesilla1);
+        tecnico1.administrar();
    //ADMINISTRADOR
 
         Scanner scanadmin = new Scanner(System.in);

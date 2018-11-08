@@ -5,9 +5,9 @@ public class Cañon {
     private boolean encendido;
     private Pista pistaasignada;
 
-    public Cañon(int potencia, boolean encendido, Pista pistaasignada) {
+    public Cañon(int potencia, Pista pistaasignada) {
         this.potencia = potencia;
-        this.encendido = encendido;
+        this.encendido = false;
         this.pistaasignada = pistaasignada;
     }
 
@@ -22,6 +22,15 @@ public void apagar(){
         this.encendido=false;
 }
 
+
+    @Override
+    public String toString() {
+        return "Cañon{" +
+                "potencia=" + potencia +
+                ", encendido=" + encendido +
+                ", pistaasignada=" + pistaasignada +
+                '}';
+    }
 
     //GETTERS && SETTERS
     public int getPotencia() {
