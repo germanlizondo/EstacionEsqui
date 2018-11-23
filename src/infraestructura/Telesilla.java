@@ -5,6 +5,8 @@ import administracion.Persona;
 import java.util.ArrayList;
 
 public class Telesilla {
+    private int Id;
+    private static int Idsiguiente = 1;
     private int largo;
     private int velocidad;
     private int capacidad;
@@ -19,6 +21,8 @@ public class Telesilla {
         this.capacidad = capacidad;
         this.consumo = consumo;
         this.encendido = false;
+        this.Id = Idsiguiente;
+        Idsiguiente++;
     }
 
 
@@ -46,7 +50,8 @@ public void descargarPersonas(){
     @Override
     public String toString() {
         return "Telesilla{" +
-                "largo=" + largo +
+                "Id = "+Id+
+                ", largo=" + largo +
                 ", velocidad=" + velocidad +
                 ", capacidad=" + capacidad +
                 ", consumo=" + consumo +
@@ -101,6 +106,11 @@ public void descargarPersonas(){
     public ArrayList<Persona> getPersonasabordo() {
         return personasabordo;
     }
+
+    public int getId() {
+        return Id;
+    }
+
 
     public void setPersonasabordo(Persona persona) {
 

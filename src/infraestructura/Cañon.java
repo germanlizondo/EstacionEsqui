@@ -1,6 +1,8 @@
 package infraestructura;
 
-public class Cañon {
+public class Cañon implements Comparable{
+    private int Id;
+    private static int Idsiguiente =1;
     private int potencia;
     private boolean encendido;
     private Pista pistaasignada;
@@ -9,6 +11,8 @@ public class Cañon {
         this.potencia = potencia;
         this.encendido = false;
         this.pistaasignada = pistaasignada;
+        this.Id = Idsiguiente;
+        Idsiguiente++;
     }
 
 public void encender(int nieve){
@@ -23,12 +27,28 @@ public void apagar(){
 }
 
 
+//Compare TO
+
+    public int compareTo(Object cañon){
+        Cañon cañon2 = (Cañon) cañon;
+        if(this.potencia<cañon2.potencia){
+            return 1;
+        }
+        else if(this.potencia>cañon2.potencia){
+            return -1;
+        }else{
+            return 0;
+        }
+    }
+
+
     @Override
     public String toString() {
         return "Cañon{" +
-                "potencia=" + potencia +
-                ", encendido=" + encendido +
-                ", pistaasignada=" + pistaasignada +
+                "ID : "+Id+
+                ", potencia= " + potencia +
+                ", encendido= " + encendido +
+                ", pistaasignada= " + pistaasignada.getName() +", Nivel de nive= " + pistaasignada.getNivelnieve() +
                 '}';
     }
 
@@ -56,4 +76,9 @@ public void apagar(){
     public void setPistaasignada(Pista pistaasignada) {
         this.pistaasignada = pistaasignada;
     }
+
+    public int getId() {
+        return Id;
+    }
+
 }

@@ -2,22 +2,9 @@ package administracion;
 
 import java.util.ArrayList;
 
-public class Administrador extends Empleado {
+public interface Administrador {
 
-    public Administrador(String nom, int sueldo, int seguridadsocial) {
-        super(nom, sueldo, seguridadsocial);
-    }
-
-
-
-
-
-
-
-
-
-
-
+    void administrar();
 
 
 }

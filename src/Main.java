@@ -1,128 +1,147 @@
+import administracion.Clase;
 import administracion.Cliente;
+import administracion.Monitor;
 import administracion.Tecnico;
 import infraestructura.Cañon;
 import infraestructura.Pista;
 import infraestructura.Telesilla;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Main {
 
     public static void main(String[] args) {
 
 
-        String nombrepista = "";
 //Principio
         ArrayList<Cañon> cañones = new ArrayList<Cañon>();
         ArrayList<Pista> pistas = new ArrayList<Pista>();
+        ArrayList<Telesilla> telesillas = new ArrayList<Telesilla>();
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        ArrayList<Clase> clases = new ArrayList<Clase>();
+
+        for(int x = 0; x<5;x++){
+            telesillas.add(new Telesilla(10+x,5+x,6,15));
+        }
+        for(int x = 0; x<5;x++){
+            pistas.add(new Pista("pista"+x,"Azul",15+x,65+x));
+        }
+        for(int x = 0; x<5;x++){
+           cañones.add(new Cañon(15+x,pistas.get(x)));
+        }
+
+        Tecnico tecnico = new Tecnico("German",123456,888483,cañones,telesillas,pistas,"hellothere");
+        Monitor monitor = new Monitor("Obi",5000000,53443345,"snowboard","dewit");
+
+        boolean exitadmin = false;
+        Scanner scanadmin = new Scanner(System.in);
+        while (!exitadmin){
+            System.out.println("¿Quien eres?");
+            System.out.println("1- Cliente");
+            System.out.println("2- Empleado");
+
+            System.out.println(".. -Salir ");
+
+            int x = scanadmin.nextInt();
+            switch (x){
+                case 1:
+
+                    Boolean exitcliente = false;
+                    while (!exitcliente){
+
+                        System.out.println("1- Comprar Forfait");
+
+
+
+                        System.out.println("2-Clases prácticas");
+                        System.out.println(".. -Salir ");
+
+                        int y = scanadmin.nextInt();
+                        switch (y){
+                            case 1:
+                                System.out.println("Por favor ingrese su Nombre");
+                                String nombrecliente = scanadmin.next();
+                                Cliente cliente = new Cliente(nombrecliente);
+                                cliente.comprarForfait();
+                                clientes.add(cliente);
+                                break;
+
+                            case 2 :
+
+                                for (Clase c: clases
+                                     ) {
+                                    System.out.println(c);
+                                }
+
+
+
+                                break;
+
+
+
+                            default: exitcliente = true;
+                        }
+                    }
+
+
+
+                    break;
+                case 2:
+                    System.out.println("Por favor ingrese la contraseña");
+                    String passwordpuesta = scanadmin.next();
+                    if(tecnico.getPassword().equals(passwordpuesta)){
+                        boolean exitempleado = false;
+
+                        while (!exitempleado){
+                            System.out.println("Bienvenido! ¿Quien eres?");
+                            System.out.println("1- Técnico");
+                            System.out.println("2- Monitor");
+
+                            System.out.println(".. -Salir ");
+
+                            int y = scanadmin.nextInt();
+                            switch (y){
+                                case 1:
+                                    tecnico.administrar();
+                                    break;
+                                case 2:
+                                    clases.add(monitor.crearClase());
+
+                                    for (Clase c: clases
+                                         ) {
+                                        System.out.println(c);
+                                    }
+                                    break;
+
+
+
+                                default: exitempleado = true;
+                            }
+                        }
+                    }else{
+                        System.out.println("Contraseña incorrecta");
+                    }
+
+
+                    break;
+
+
+
+                default: exitadmin = true;
+            }
+        }
         //Final Principio
 
         //Tecnico
 
-        Tecnico tecnico1 = new Tecnico("German",123456,888483);
-        Telesilla telesilla1 = new Telesilla(1,2,3,3);
-        tecnico1.setTelesillas(telesilla1);
-        tecnico1.administrar();
+
+
+
    //ADMINISTRADOR
 
-        Scanner scanadmin = new Scanner(System.in);
-     boolean exitadmin = false;
-
-   while (!exitadmin){
-
-        System.out.println("¿Que desea hacer?");
-       System.out.println("1- Ver todas las Pistas");
-       System.out.println("2- Ver todas las Pistas abiertas");
-       System.out.println("3- Ver todas las Pistas cerradas");
-       System.out.println("4- Añadir Pista");
-       System.out.println("5- Eliminar Pista");
-       System.out.println("6- Cambiar estado de la Pista");
-       System.out.println(".. -Salir Administrador");
-
-       int x = scanadmin.nextInt();
-       switch (x){
-           case 1:
-               if (pistas.isEmpty()) System.out.println("No hay pistas");
-               else   for (Pista i : pistas
-               ) {
-                   System.out.println(i);
-               }
-
-               break;
-           case 2:
-
-               for (Pista i : pistas
-               ) {
-                   if(i.isAbierta())   System.out.println(i);
-
-               }
-               break;
-           case 3:
-               for (Pista i : pistas
-               ) {
-                   if(!i.isAbierta())   System.out.println(i);
-
-               }
-               break;
-           case 4:
-               System.out.println("NOMBRE: ");
-               String name = scanadmin.next();
-               System.out.println("COLOR: ");
-               String color = scanadmin.next();
-               System.out.println("LONGITUD(km): ");
-               int longitud = scanadmin.nextInt();
-               System.out.println("NIVEL DE LA NIEVE(%): ");
-               int nivelnieve = scanadmin.nextInt();
-                pistas.add(new Pista(name,color,longitud,nivelnieve));
-               break;
-           case 5:
-
-               for (Pista i: pistas
-               ) {
-                   System.out.println(i);
-               }
-int iterador = 0;
-               System.out.println("NOMBRE: ");
-                nombrepista = scanadmin.next();
-               for (Pista i : pistas
-               ) {
-
-                       if (i.getName().equals(nombrepista)){
-                           pistas.remove(iterador);
-                           System.out.println("Pista : " + i.getName()+ " eliminada" );
-                       }
-
-                   iterador++;
-               }
-               break;
-
-           case 6:
-
-               for (Pista i: pistas
-                    ) {
-               System.out.println(i);
-               }
-
-               System.out.println("NOMBRE: ");
-                nombrepista = scanadmin.next();
-               for (Pista i : pistas
-               ) {
-                   String estado = "";
-                   if(i.getName().equals(nombrepista)) {
-                       if (i.isAbierta()) estado = "Cerrada";
-                       else estado = "Abierta";
-                       if (i.isAbierta()) i.setAbierta(false);
-                       else i.setAbierta(true);
-                       System.out.println("Pista : " + i.getName() + " | Estado : " + estado);
-                   }
-               }
-               break;
-
-           default:
-               exitadmin = true;
-       }
-
-
-    }
 }
+
 
 }

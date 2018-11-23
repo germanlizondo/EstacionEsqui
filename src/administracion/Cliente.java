@@ -1,9 +1,12 @@
 package administracion;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Cliente extends Persona {
     private Forfait forfait;
+    private ArrayList<Clase> clases;
+
 
     public Cliente(String nom) {
         super(nom);
@@ -80,6 +83,19 @@ public class Cliente extends Persona {
 
 
     //GETTERS && SETTERS
+
+public void comprarclases(Clase clase) {
+
+                this.clases.add(clase);
+
+
+}
+
+
+    public ArrayList<Clase> getClases() {
+        return clases;
+    }
+
 
 
     public Forfait getForfait() {
