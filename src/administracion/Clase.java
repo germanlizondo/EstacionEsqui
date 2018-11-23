@@ -8,13 +8,14 @@ public class Clase {
     private Deporte deporte;
     private int precio;
     private String dificultat;
-
+    private Boolean acabada = false;
+    private int duracion;
     private ArrayList<Monitor> monitores = new ArrayList<Monitor>();
     private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
-    public Clase(String a_deporte, int precio) {
+    public Clase(String a_deporte, int precio,String dificultat) {
         this.deporte = Enum.valueOf(Deporte.class,a_deporte.toUpperCase());
-
+this.dificultat = dificultat;
         this.precio = precio;
 
     }
@@ -26,6 +27,30 @@ public class Clase {
                 ", precio=" + precio +
                 ", dificultat='" + dificultat + '\'' +
                 '}';
+    }
+
+    public String getDificultat() {
+        return dificultat;
+    }
+
+    public void setDificultat(String dificultat) {
+        this.dificultat = dificultat;
+    }
+
+    public Boolean getAcabada() {
+        return acabada;
+    }
+
+    public void setAcabada(Boolean acabada) {
+        this.acabada = acabada;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
     }
 
     public Deporte getDeporte() {
