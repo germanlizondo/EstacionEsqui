@@ -32,9 +32,9 @@ public class Tecnico extends Empleado{
             System.out.println("1- Ver los telesillas");
             System.out.println("2- Parar todos los telesillas");
             System.out.println("3- Encender todos los telesillas");
-            System.out.println("3- Encender todos los telesillas");
             System.out.println("4- Encender un telesilla");
-            System.out.println("4- Para un telesilla");
+            System.out.println("5- Parar un telesilla");
+
             System.out.println(".. -Salir Administrador");
 
             int x = scanadmin.nextInt();
@@ -57,7 +57,7 @@ public class Tecnico extends Empleado{
                     ) {
                         t.setEncendido(true);
                     }
-                    System.out.println("Todos los Telesillas Encendidos+");
+                    System.out.println("Todos los Telesillas Encendidos");
 
                     break;
                 case 4:
@@ -161,8 +161,7 @@ public class Tecnico extends Empleado{
 
                     for (Cañon i : this.cañones
                     ) {
-                        System.out.println(i.getId());
-                        System.out.println(id_cañon);
+
                         if (i.getId() == id_cañon){
                             if(!i.isEncendido()){
                                 System.out.println("Que porcentage de nieve quieres encender?");
@@ -319,9 +318,7 @@ this.administrar_cañones();
         return "Tecnico{" +
                 "ID: " + getId()+
                 " Nombre: "+this.getNom()+
-                " cañones=" + cañones +
-                ", telesillas=" + telesillas +
-                ", pistas=" + pistas +
+
                 '}';
     }
 

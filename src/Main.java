@@ -19,7 +19,7 @@ interface Buscarclase {
 }
 
 interface Validar {
-    Empleado validarpassword(String password);
+    Empleado validarpassword(String p);
 
 }
 public class Main {
@@ -52,11 +52,9 @@ public class Main {
         for(int x = 0; x<5;x++){
             empleados.add(new Tecnico("empleado"+x,1500,8012345+x,cañones,telesillas,pistas,"kenobi"+x));
             empleados.add(new Monitor("monitor"+x,1000,803243+x,"SNOWBOARD","monitor"+x));
+            empleados.add(new Responsable("responsable"+x,3000,801234,"res"+x,empleados));
         }
 
-        Empleado responsable = new Responsable("responsable",3000,801234,"1234",empleados);
-        Empleado tecnico = new Tecnico("German",123456,888483,cañones,telesillas,pistas,"hellothere");
-        Empleado monitor = new Monitor("Obi",5000000,53443345,"snowboard","dewit");
 
         boolean exitadmin = false;
         Scanner scanadmin = new Scanner(System.in);
@@ -136,150 +134,165 @@ public class Main {
                 case 2:
                     System.out.println("Por favor ingrese la contraseña");
                     String passwordpuesta = scanadmin.next();
-                    if(tecnico.getPassword().equals(passwordpuesta)){
+
+                    Validar validar = (p) ->{
+
+                        for (Empleado e: empleados
+                        ) {
+                            if(e.getPassword().equals(p)){
+                                return e;
+
+                            }
+
+                        }
+
+
+                        return null;
+
+                    };
+
+                    Empleado empleadologeado = validar.validarpassword(passwordpuesta);
+                    if(empleadologeado != null){
                         boolean exitempleado = false;
 
-                        while (!exitempleado){
-                            System.out.println("Bienvenido! ¿Quien eres?");
-                            System.out.println("1- Técnico");
-                            System.out.println("2- Monitor");
-                            System.out.println("3- Responsable");
-                            System.out.println(".. -Salir ");
 
-                            int y = scanadmin.nextInt();
-                            switch (y){
-                                case 1:
-                                    tecnico.administrar();
-                                    break;
-                                case 2:
-                                    Boolean exitmonitor = false;
+                            System.out.println("Bienvenido "+empleadologeado.getNom());
+                            if(empleadologeado instanceof Tecnico){
+                                System.out.println("Técnico :");
+                                Tecnico tecnico = (Tecnico) empleadologeado;
+                                tecnico.administrar();
+                            }else if(empleadologeado instanceof Monitor){
+                                Monitor monitor = (Monitor) empleadologeado;
+                                System.out.println("Monitor :");
+                                Boolean exitmonitor = false;
 
-                                    while (!exitmonitor){
-                                        System.out.println("Bienvenido Monitor! ¿Que queires hacer?");
-                                        System.out.println("1- Ver tus Clases");
-                                        System.out.println("2-  Crear Clase");
-                                        System.out.println(".. -Salir ");
+                                while (!exitmonitor){
+                                    System.out.println("¿Que queires hacer?");
+                                    System.out.println("1- Ver tus Clases");
+                                    System.out.println("2-  Crear Clase");
+                                    System.out.println(".. -Salir ");
 
-                                        int xmonitor = scanadmin.nextInt();
-                                        switch (xmonitor){
-                                            case 1:
-                                               monitor.administrar();
-                                                break;
-                                            case 2:
-                                                ((Monitor) monitor).crearClase();
-                                                break;
-                                            default: exitmonitor = true;
-                                        }
+                                    int xmonitor = scanadmin.nextInt();
+                                    switch (xmonitor){
+                                        case 1:
+                                            monitor.administrar();
+                                            break;
+                                        case 2:
+                                            ((Monitor) monitor).crearClase();
+                                            break;
+                                        default: exitmonitor = true;
                                     }
-                                    clases.add(((Monitor) monitor).crearClase());
+                                }
+                                clases.add(((Monitor) monitor).crearClase());
 
-                                    for (Clase c: clases
-                                         ) {
-                                        System.out.println(c);
-                                    }
-                                    break;
-                                case 3:
+                                for (Clase c: clases
+                                ) {
+                                    System.out.println(c);
+                                }
+                            }else if(empleadologeado instanceof Responsable) {
 
-                                    Boolean exitresponsable = false;
-                                    while (!exitresponsable){
-                                        System.out.println("Bienvenido Responsable! ¿Que queires hacer?");
-                                        System.out.println("1- Ver los Empleados");
-                                        System.out.println("2- Crear Clase práctica");
-                                        System.out.println("3- Ver todas Clase práctica");
-                                        System.out.println("4- Asignar Clase");
-                                        System.out.println("5- Contratar Monitor");
-                                        System.out.println("6- Contratar Técnico");
-                                        System.out.println(".. -Salir ");
+                                Responsable responsable = (Responsable) empleadologeado;
 
-                                        int xmonitor = scanadmin.nextInt();
-                                        switch (xmonitor){
-                                            case 1:
-                                                responsable.administrar();
-                                                break;
-                                            case 2:
-                                                clases.add(((Responsable) responsable).crearClase());
-                                                break;
-                                            case 3:
-                                                clases.forEach(c -> System.out.println(c));
+                                Boolean exitresponsable = false;
 
-                                                break;
-                                            case 4:
 
-                                                Buscarmonitores buscarmoonitores = (i) ->{
-                                                    for (Empleado e: empleados
-                                                    ) {
-                                                        if(e.getId() == i){
-                                                            return e;
-                                                        }
+                                System.out.println(" Responsable: ¿Que queires hacer?");
+                                while (!exitresponsable){
+
+                                    System.out.println("1- Ver los Empleados");
+                                    System.out.println("2- Crear Clase práctica");
+                                    System.out.println("3- Ver todas Clase práctica");
+                                    System.out.println("4- Asignar Clase");
+                                    System.out.println("5- Contratar Monitor");
+                                    System.out.println("6- Contratar Técnico");
+                                    System.out.println(".. -Salir ");
+
+                                    int xres = scanadmin.nextInt();
+                                    switch (xres){
+                                        case 1:
+                                            responsable.administrar();
+                                            break;
+                                        case 2:
+                                            clases.add(((Responsable) responsable).crearClase());
+                                            break;
+                                        case 3:
+                                            clases.forEach(c -> System.out.println(c));
+
+                                            break;
+                                        case 4:
+
+                                            Buscarmonitores buscarmoonitores = (i) ->{
+                                                for (Empleado e: empleados
+                                                ) {
+                                                    if(e.getId() == i){
+                                                        return e;
                                                     }
+                                                }
 
 
-                                                    return null;
-                                                };
+                                                return null;
+                                            };
 
-                                                Buscarclase buscarclase = (i) ->{
-                                                    for (Clase e: clases
-                                                    ) {
-                                                        if(e.getId() == i){
-                                                            return e;
-                                                        }
+                                            Buscarclase buscarclase = (i) ->{
+                                                for (Clase e: clases
+                                                ) {
+                                                    if(e.getId() == i){
+                                                        return e;
                                                     }
+                                                }
 
 
-                                                    return null;
-                                                };
+                                                return null;
+                                            };
 
 
-                                                clases.forEach(c -> System.out.println(c));
+                                            clases.forEach(c -> System.out.println(c));
 
-                                                System.out.println("Que clase quieres asignar?");
-                                                int id_clase = scanadmin.nextInt();
+                                            System.out.println("Que clase quieres asignar?");
+                                            int id_clase = scanadmin.nextInt();
 
-                                                empleados.forEach(e -> {
-                                                    if(e instanceof Monitor)
+                                            empleados.forEach(e -> {
+                                                if(e instanceof Monitor){
                                                     System.out.println(e);
-                                                });
-                                                System.out.println("Que monitor quieres asignar la clase?");
-                                                int id_empleado = scanadmin.nextInt();
+                                                }
+
+                                            });
+                                            System.out.println("Que monitor quieres asignar la clase?");
+                                            int id_empleado = scanadmin.nextInt();
 
 
-                                                Empleado este_empleado = buscarmoonitores.buscarempleado(id_empleado);
-                                                Clase esta_clase = buscarclase.buscarclase(id_clase);
-                                                Monitor casting_empleado = (Monitor) este_empleado;
-                                                casting_empleado.agregarClase(esta_clase);
+                                            Empleado este_empleado = buscarmoonitores.buscarempleado(id_empleado);
+                                            Clase esta_clase = buscarclase.buscarclase(id_clase);
+                                            Monitor casting_empleado = (Monitor) este_empleado;
+                                            casting_empleado.agregarClase(esta_clase);
 
 
 
-                                                break;
-                                            case 5:
-                                                Monitor nuevomonitor = ((Responsable) responsable).contratarMonitor();
-                                                empleados.add(nuevomonitor);
-                                                break;
-                                            case 6:
+                                            break;
+                                        case 5:
+                                            Monitor nuevomonitor = ((Responsable) responsable).contratarMonitor();
+                                            empleados.add(nuevomonitor);
+                                            break;
+                                        case 6:
                                             Tecnico nuevotecnico = ((Responsable) responsable).contratarTecnico(pistas,cañones,telesillas);
                                             empleados.add(nuevotecnico);
-                                                break;
-                                            default: exitresponsable = true;
-                                        }
+                                            break;
+                                        default:
+
+                                            exitresponsable = true;
                                     }
+                                }
 
-                                    break;
-
-
-                                default: exitempleado = true;
                             }
-                        }
+
+
                     }else{
                         System.out.println("Contraseña incorrecta");
+
+                        break;
                     }
-
-
                     break;
-
-
-
-
-                default: exitadmin = true;
+                    default: exitadmin = true;
             }
         }
 
