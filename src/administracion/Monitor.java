@@ -19,9 +19,6 @@ public class Monitor extends Empleado implements ActionListener {
 
     @Override
     public void administrar() {
-
-
-
         for (Clase c : this.clases
              ) {
             System.out.println(c);
@@ -55,7 +52,7 @@ public class Monitor extends Empleado implements ActionListener {
                 case 3: dificultat = "Avanzado";
                     exitclase = true ;
                     break;
-                default: exitclase = true ;
+                default: exitclase = false ;
             }
 
         }
@@ -85,5 +82,18 @@ public class Monitor extends Empleado implements ActionListener {
         this.deporte = deporte;
     }
 
-
+    @Override
+    public String toString() {
+        return "Monitor{" +
+                "ID : " + getId()+
+                ", NOMBRE: "+getNom()+
+                ", clases=" + clases +
+                ", deporte=" + deporte +
+                ", dandoclase=" + dandoclase +
+                ", tiempodandoclase=" + tiempodandoclase +
+                '}';
+    }
 }
+
+
+

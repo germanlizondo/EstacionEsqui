@@ -12,7 +12,7 @@ public class Cliente extends Persona {
         super(nom);
     }
 
-
+@Override
     public void comprarForfait(){
         Scanner scanner = new Scanner(System.in);
         String seguro = "";
@@ -91,6 +91,13 @@ public void comprarclases(Clase clase) {
 
 }
 
+    public void setForfait(Forfait forfait) {
+        this.forfait = forfait;
+    }
+
+    public void setClases(Clase clase) {
+        this.clases.add(clase);
+    }
 
     public ArrayList<Clase> getClases() {
         return clases;

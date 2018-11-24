@@ -4,29 +4,45 @@ import java.lang.ref.Cleaner;
 import java.util.ArrayList;
 
 public class Clase {
-
+    private int Id;
+    private static int Idsiguiente = 1;
     private Deporte deporte;
     private int precio;
     private String dificultat;
     private Boolean acabada = false;
     private int duracion;
-    private ArrayList<Monitor> monitores = new ArrayList<Monitor>();
+
     private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
     public Clase(String a_deporte, int precio,String dificultat) {
         this.deporte = Enum.valueOf(Deporte.class,a_deporte.toUpperCase());
 this.dificultat = dificultat;
         this.precio = precio;
+        this.Id = Idsiguiente;
+        Idsiguiente++;
 
     }
 
     @Override
     public String toString() {
         return "Clase{" +
-                "deporte=" + deporte +
+                "Id=" + Id +
+                ", deporte=" + deporte +
                 ", precio=" + precio +
                 ", dificultat='" + dificultat + '\'' +
+                ", acabada=" + acabada +
+                ", duracion=" + duracion +
+
+                ", clientes=" + clientes +
                 '}';
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public static int getIdsiguiente() {
+        return Idsiguiente;
     }
 
     public String getDificultat() {
@@ -69,19 +85,13 @@ this.dificultat = dificultat;
         this.precio = precio;
     }
 
-    public ArrayList<Monitor> getMonitores() {
-        return monitores;
-    }
 
-    public void setMonitores(ArrayList<Monitor> monitores) {
-        this.monitores = monitores;
-    }
 
     public ArrayList<Cliente> getClientes() {
         return clientes;
     }
 
-    public void setClientes(ArrayList<Cliente> clientes) {
-        this.clientes = clientes;
+    public void setClientes(Cliente cliente) {
+        this.clientes.add(cliente);
     }
 }

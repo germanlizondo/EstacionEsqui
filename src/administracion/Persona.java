@@ -1,16 +1,21 @@
 package administracion;
 
 public abstract class Persona {
-
+    private int Id;
+    private static int Idsiguiente = 1;
     private String nom;
     private String DNI;
 
     public Persona(String nom) {
+
         this.nom = nom;
+        this.Id = Idsiguiente;
+        Idsiguiente++;
     }
 
 
 
+    public void comprarForfait(){ }
 
 
 
@@ -21,6 +26,12 @@ public abstract class Persona {
 
 
     //GETTERS && SETTERS
+
+
+    public int getId() {
+        return Id;
+    }
+
 
 
     public String getNom() {

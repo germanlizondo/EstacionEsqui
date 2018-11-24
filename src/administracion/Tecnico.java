@@ -314,11 +314,19 @@ this.administrar_cañones();
         }
     }
 
+    @Override
+    public String toString() {
+        return "Tecnico{" +
+                "ID: " + getId()+
+                " Nombre: "+this.getNom()+
+                " cañones=" + cañones +
+                ", telesillas=" + telesillas +
+                ", pistas=" + pistas +
+                '}';
+    }
 
 
-
-
-    //GETTERS & SETTERS
+//GETTERS & SETTERS
 
 
     public void setCañones(ArrayList<Cañon> cañones) {
