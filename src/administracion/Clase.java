@@ -28,11 +28,6 @@ this.dificultat = dificultat;
         return "Clase{" +
                 "Id=" + Id +
                 ", deporte=" + deporte +
-                ", precio=" + precio +
-                ", dificultat='" + dificultat + '\'' +
-                ", acabada=" + acabada +
-                ", duracion=" + duracion +
-
                 ", clientes=" + clientes +
                 '}';
     }

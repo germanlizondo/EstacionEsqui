@@ -58,19 +58,21 @@ public class Main {
 
         boolean exitadmin = false;
         Scanner scanadmin = new Scanner(System.in);
+
         while (!exitadmin){
             System.out.println("¿Quien eres?");
             System.out.println("1- Cliente");
             System.out.println("2- Empleado");
             System.out.println(".. -Salir ");
 
+            Persona cliente = new Cliente("");
             int x = scanadmin.nextInt();
             switch (x){
                 case 1:
 
                     Boolean exitcliente = false;
                     while (!exitcliente){
-                        Persona cliente = new Cliente("");
+
                         System.out.println("1- Comprar Forfait");
                         System.out.println("2-Clases prácticas");
                         System.out.println("3-Adquirir clase práctica");
@@ -82,7 +84,8 @@ public class Main {
                                 System.out.println("Por favor ingrese su Nombre");
                                 String nombrecliente = scanadmin.next();
                                 cliente.setNom(nombrecliente);
-                                cliente.comprarForfait();
+
+                                ((Cliente) cliente).comprarForfait();
                                 clientes.add(cliente);
                                 break;
 
@@ -205,6 +208,7 @@ public class Main {
                                     System.out.println("4- Asignar Clase");
                                     System.out.println("5- Contratar Monitor");
                                     System.out.println("6- Contratar Técnico");
+                                    System.out.println("7- Ver todos los clientes");
                                     System.out.println(".. -Salir ");
 
                                     int xres = scanadmin.nextInt();
@@ -276,6 +280,9 @@ public class Main {
                                         case 6:
                                             Tecnico nuevotecnico = ((Responsable) responsable).contratarTecnico(pistas,cañones,telesillas);
                                             empleados.add(nuevotecnico);
+                                            break;
+                                        case 7:
+                                            clientes.forEach(c -> System.out.println(c));
                                             break;
                                         default:
 

@@ -12,7 +12,7 @@ public class Cliente extends Persona {
         super(nom);
     }
 
-@Override
+
     public void comprarForfait(){
         Scanner scanner = new Scanner(System.in);
         String seguro = "";
@@ -79,6 +79,13 @@ public class Cliente extends Persona {
 
 
 
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "Nombre : "+getNom()+
+                '}';
     }
 
 
