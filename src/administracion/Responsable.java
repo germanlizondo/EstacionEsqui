@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-
+/**
+ * Clase Responsable que hereda de Empleado
+ */
 
 public class Responsable extends Empleado {
     private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
@@ -21,6 +23,9 @@ public class Responsable extends Empleado {
 
     }
 
+    /**
+     * Sobreescritura de administrar para Responsable
+     */
     @Override
     public void administrar() {
 
@@ -64,7 +69,10 @@ public class Responsable extends Empleado {
 
     }
 
-
+    /**
+     * Crea una clase practica para devolverla y que se pueda añadir a un ArrayList
+     * @return
+     */
     public Clase crearClase(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Deporte de la clase :");
@@ -77,6 +85,14 @@ public class Responsable extends Empleado {
         return clase;
     }
 
+    /**
+     * Crea una instancia de Tecnico y la devuelve
+     *
+     * @param pistas
+     * @param cañones
+     * @param telesillas
+     * @return
+     */
     public Tecnico contratarTecnico(ArrayList<Pista> pistas, ArrayList<Cañon> cañones, ArrayList<Telesilla> telesillas){
         Scanner scan = new Scanner(System.in);
         System.out.println("Nombre del Técnico :");
@@ -90,6 +106,11 @@ public class Responsable extends Empleado {
         Tecnico tecnico = new Tecnico(nombre,sueldo,seso,cañones,telesillas,pistas,password);
         return tecnico;
     }
+
+    /**
+     * Crea una instancia de Monitor y la devuelve
+     * @return
+     */
 
     public Monitor contratarMonitor(){
         Scanner scan = new Scanner(System.in);
@@ -129,10 +150,18 @@ public class Responsable extends Empleado {
         return monitor;
     }
 
-
+    /**
+     * Getter de Empleados
+     * @return
+     */
     public ArrayList<Empleado> getEmpleados() {
         return empleados;
     }
+
+    /**
+     * Setter de empleados
+     * @param empleados
+     */
 
     public void setEmpleados(ArrayList<Empleado> empleados) {
         this.empleados = empleados;

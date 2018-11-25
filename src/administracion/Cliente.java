@@ -3,16 +3,26 @@ package administracion;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Clase Cliente
+ */
 public class Cliente extends Persona {
     private Forfait forfait;
     private ArrayList<Clase> clases;
 
+    /**
+     * Constructor de cliente
+     * @param nom
+     */
 
     public Cliente(String nom) {
         super(nom);
     }
 
-
+    /**
+     * Método de comprar Fortfait , añade un forfait
+     * al cliente
+     */
     public void comprarForfait(){
         Scanner scanner = new Scanner(System.in);
         String seguro = "";
@@ -81,6 +91,10 @@ public class Cliente extends Persona {
 
     }
 
+    /**
+     * override de tostring de Cliente
+     * @return
+     */
     @Override
     public String toString() {
         return "Cliente{" +
@@ -91,26 +105,47 @@ public class Cliente extends Persona {
 
     //GETTERS && SETTERS
 
-public void comprarclases(Clase clase) {
+    /**
+     * Recibe una clase y la añade a la ArrayList de Clientes
+     * @param clase
+     */
+    public void comprarclases(Clase clase) {
 
                 this.clases.add(clase);
 
 
 }
 
+    /**
+     * Setter de forfait
+     * @param forfait
+     */
+
     public void setForfait(Forfait forfait) {
         this.forfait = forfait;
     }
 
+    /**
+     * Setter de clases
+     * @param clase
+     */
     public void setClases(Clase clase) {
         this.clases.add(clase);
     }
+
+    /**
+     * getter de clases
+     * @return
+     */
 
     public ArrayList<Clase> getClases() {
         return clases;
     }
 
-
+    /**
+     * getter de Forfait
+     * @return
+     */
 
     public Forfait getForfait() {
         return forfait;

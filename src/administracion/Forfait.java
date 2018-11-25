@@ -2,6 +2,9 @@ package administracion;
 
 import java.util.*;
 
+/**
+ * Calse Forfait
+ */
 public class Forfait {
     private int precio;
     private String fecha;
@@ -9,6 +12,12 @@ public class Forfait {
     private boolean seguro;
     private Tipo tipo;
 
+    /**
+     * Constructor de Forfait
+     * @param precio
+     * @param seguro
+     * @param abreviatura
+     */
     public Forfait(int precio, boolean seguro,String abreviatura) {
 
         Calendar calendario = new GregorianCalendar();
@@ -25,6 +34,10 @@ public class Forfait {
         this.tipo = Enum.valueOf(Tipo.class,abreviatura.toUpperCase());
     }
 
+    /**
+     * Override toString de Forfait
+     * @return
+     */
     @Override
     public String toString() {
 
@@ -33,6 +46,11 @@ public class Forfait {
 
     }
 
+    /**
+     * Metodo para validar el dni; retorna false o true
+     * @param dni
+     * @return
+     */
 
     public boolean validarDni(String dni){
 
@@ -46,32 +64,60 @@ public class Forfait {
 
     //GETTERS && SETTERS
 
+    /**
+     * getter Precio
+     * @return
+     */
     public int getPrecio() {
         return precio;
     }
 
+    /**
+     * setter Precio
+     * @param precio
+     */
     public void setPrecio(int precio) {
         this.precio = precio;
     }
+
+    /**
+     * getter Fecha
+     * @return
+     */
 
     public String getFecha() {
         return fecha;
     }
 
-
+    /**
+     * Compueba si hay seguro o no
+     * @return
+     */
 
     public boolean isSeguro() {
         return seguro;
     }
 
+    /**
+     * añade el seguro
+     * @param seguro
+     */
     public void setSeguro(boolean seguro) {
         this.seguro = seguro;
     }
 
+    /**
+     * getter DNI
+     * @return
+     */
     public String getDni() {
         return dni;
     }
 
+    /**
+     * setter DNI
+     * @param dni
+     */
     public void setDni(String dni) {
         this.dni = dni;
     }

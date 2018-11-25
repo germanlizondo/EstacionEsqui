@@ -10,18 +10,35 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Clase tecnico extiende de Empleado
+ */
 public class Tecnico extends Empleado{
 
     private ArrayList<Cañon> cañones = new ArrayList<Cañon>();
     private ArrayList<Telesilla> telesillas = new ArrayList<Telesilla>();
     private ArrayList<Pista> pistas = new ArrayList<Pista>();
 
+    /**
+     * Constructor de Tecnico
+     * @param nom
+     * @param sueldo
+     * @param seguridadsocial
+     * @param cañones
+     * @param telesillas
+     * @param pistas
+     * @param password
+     */
     public Tecnico(String nom, int sueldo, int seguridadsocial, ArrayList<Cañon> cañones, ArrayList<Telesilla> telesillas, ArrayList<Pista> pistas,String password) {
         super(nom, sueldo, seguridadsocial,password);
         this.cañones = cañones;
         this.telesillas = telesillas;
         this.pistas = pistas;
     }
+
+    /**
+     * Clase para admnistrar los telesillas
+     */
 
     public void adminitrar_telesillas(){
         boolean exitadmin = false;
@@ -106,7 +123,9 @@ public class Tecnico extends Empleado{
             }
         }
     }
-
+    /**
+     * Clase para admnistrar los cañones
+     */
     public void administrar_cañones(){
         boolean exitadmin = false;
         Scanner scanadmin = new Scanner(System.in);
@@ -193,7 +212,9 @@ public class Tecnico extends Empleado{
         }
     }
 
-
+    /**
+     * Clase para admnistrar las pistas
+     */
     public void administrarpistas(){
 
         Scanner scanadmin = new Scanner(System.in);
@@ -286,6 +307,9 @@ public class Tecnico extends Empleado{
         }
     }
 
+    /**
+     * override de administrar
+     */
     @Override
     public  void administrar(){
         boolean exitadmin = false;
@@ -313,6 +337,10 @@ this.administrar_cañones();
         }
     }
 
+    /**
+     * Override de toString
+     * @return
+     */
     @Override
     public String toString() {
         return "Tecnico{" +
@@ -325,36 +353,67 @@ this.administrar_cañones();
 
 //GETTERS & SETTERS
 
-
+    /**
+     * setter Cañones
+     * @param cañones
+     */
     public void setCañones(ArrayList<Cañon> cañones) {
         this.cañones = cañones;
     }
 
+    /**
+     * setter Telesillas
+     * @param telesillas
+     */
     public void setTelesillas(ArrayList<Telesilla> telesillas) {
         this.telesillas = telesillas;
     }
 
+    /**
+     * getter Pistas
+     * @return
+     */
     public ArrayList<Pista> getPistas() {
         return pistas;
     }
 
+    /**
+     * setter Psitas
+     * @param pistas
+     */
     public void setPistas(ArrayList<Pista> pistas) {
         this.pistas = pistas;
     }
 
+    /**
+     * getter Cañones
+     * @return
+     */
     public ArrayList<Cañon> getCañones() {
         return cañones;
     }
 
+    /**
+     * setter Cañones
+     * @param cañon
+     */
     public void setCañones(Cañon cañon) {
         this.cañones.add(cañon);
 
     }
 
+    /**
+     * getter Telesillas
+     * @return
+     */
     public ArrayList<Telesilla> getTelesillas() {
         return telesillas;
     }
 
+    /**
+     * setter Telesillas
+     * @param telesilla
+     */
     public void setTelesillas(Telesilla telesilla) {
         this.telesillas.add(telesilla);
     }

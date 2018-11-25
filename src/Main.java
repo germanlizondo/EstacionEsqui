@@ -7,23 +7,40 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Interface para buscar monitores
+ */
 
 interface Buscarmonitores {
     Empleado buscarempleado(int i);
 
 }
 
+/**
+ * Interface para buscar clases practicas
+ */
 interface Buscarclase {
     Clase buscarclase(int i);
 
 }
 
+/**
+ * Interface para lambda deonde valida el password
+ */
+
 interface Validar {
     Empleado validarpassword(String p);
 
 }
-public class Main {
 
+/**
+ * Clase principal del proyecto
+ */
+public class Main {
+    /**
+     * Funcion Main de la aplicación
+     * @param args
+     */
     public static void main(String[] args) {
 
 
