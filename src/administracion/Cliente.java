@@ -99,6 +99,7 @@ public class Cliente extends Persona {
     public String toString() {
         return "Cliente{" +
                 "Nombre : "+getNom()+
+                " | FORTFAIT: "+ getForfait()+
                 '}';
     }
 

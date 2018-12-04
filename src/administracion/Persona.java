@@ -21,17 +21,6 @@ public abstract class Persona {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     //GETTERS && SETTERS
 
     /**

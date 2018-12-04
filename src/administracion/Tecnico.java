@@ -151,9 +151,10 @@ public class Tecnico extends Empleado{
                     for (Cañon i : this.cañones
                     ) {
                         i.apagar();
-                        System.out.println("Todos los Cañones han sido apagados");
+
 
                     }
+                    System.out.println("Todos los Cañones han sido apagados");
                     break;
                 case 3:
                     System.out.println("¿Que porcentaje de nieve quieres llenar las pistas?");

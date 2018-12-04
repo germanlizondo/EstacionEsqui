@@ -55,10 +55,10 @@ public class Cañon implements Comparable{
     public int compareTo(Object cañon){
         Cañon cañon2 = (Cañon) cañon;
         if(this.potencia<cañon2.potencia){
-            return 1;
+            return -1;
         }
         else if(this.potencia>cañon2.potencia){
-            return -1;
+            return 1;
         }else{
             return 0;
         }

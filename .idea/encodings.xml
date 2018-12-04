@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/src/administracion/Administrador.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/administracion/Clase.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/administracion/Cliente.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/administracion/Deporte.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/administracion/Empleado.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/administracion/Forfait.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/administracion/Monitor.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/administracion/Persona.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/administracion/Responsable.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/administracion/Tecnico.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/administracion/Tipo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/infraestructura/Cañon.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/infraestructura/Pista.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/infraestructura/Telesilla.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

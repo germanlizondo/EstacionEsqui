@@ -54,23 +54,58 @@ public class Main {
         ArrayList<Empleado> empleados = new ArrayList<Empleado>();
 
 
-        for(int x = 0; x<5;x++){
-            telesillas.add(new Telesilla(10+x,5+x,6,15));
-        }
-        for(int x = 0; x<5;x++){
-            pistas.add(new Pista("pista"+x,"Azul",15+x,65+x));
-        }
-        for(int x = 0; x<5;x++){
-            cañones.add(new Cañon(15+x,pistas.get(x)));
-        }
-        for(int x = 0; x<5;x++){
-          clases.add(new Clase("SNOWBOARD",50+x,"Avanzado"));
-        }
-        for(int x = 0; x<5;x++){
-            empleados.add(new Tecnico("empleado"+x,1500,8012345+x,cañones,telesillas,pistas,"kenobi"+x));
-            empleados.add(new Monitor("monitor"+x,1000,803243+x,"SNOWBOARD","monitor"+x));
-            empleados.add(new Responsable("responsable"+x,3000,801234,"res"+x,empleados));
-        }
+/**
+ * Agregar Telesillas a la ARRAYLIST DE TELESILLAS
+ */
+            telesillas.add(new Telesilla(10,5,6,15));
+            telesillas.add(new Telesilla(5,5,4,10));
+            telesillas.add(new Telesilla(7,5,3,5));
+
+/**
+ * Agregar PISTAS a la ARRAYLIST DE PISTAS
+ */
+            pistas.add(new Pista("pista1","Azul",15,65));
+            pistas.add(new Pista("pista2","Roja",10,65));
+            pistas.add(new Pista("pista3","Verde",20,65));
+
+/**
+ * Agregar CAÑONES a la ARRAYLIST DE CAÑONES
+ */
+        cañones.add(new Cañon(15,pistas.get(1)));
+
+        cañones.add(new Cañon(15,pistas.get(2)));
+
+        cañones.add(new Cañon(15,pistas.get(0)));
+
+
+/**
+ * Agregar CALSES a la ARRAYLIST DE CLASES
+ */
+
+          clases.add(new Clase("SNOWBOARD",50,"Principiante"));
+        clases.add(new Clase("ESQUI",50,"Principiante"));
+        clases.add(new Clase("RAQUETAS",25,"Avanzado"));
+
+/**
+ * Agregar TECNICOS a la ARRAYLIST DE EMPLEADOS
+ */
+
+        empleados.add(new Tecnico("German",1500,8048754,cañones,telesillas,pistas,"kenobi"));
+        empleados.add(new Tecnico("Miquel",1500,8012345,cañones,telesillas,pistas,"hola"));
+        empleados.add(new Tecnico("Dimitri",1500,8078948,cañones,telesillas,pistas,"adeu"));
+        empleados.add(new Tecnico("Marcos",1500,80789456,cañones,telesillas,pistas,"123456"));
+        /**
+         * Agregar MONITORES a la ARRAYLIST DE EMPLEADOS
+         */
+
+        empleados.add(new Monitor("Andrea",1000,8047985,"SNOWBOARD","snow123"));
+        empleados.add(new Monitor("Raul",1000,8047985,"ESQUI","esqui123"));
+        empleados.add(new Monitor("Adria",1000,8047985,"RAQUETAS","raq123"));
+        /**
+         * Agregar EMPLEADOS a la ARRAYLIST DE EMPLEADOS
+         */
+        empleados.add(new Responsable("Steve",3000,801234,"res",empleados));
+
 
 
         boolean exitadmin = false;
@@ -99,11 +134,19 @@ public class Main {
                         switch (y){
                             case 1:
                                 System.out.println("Por favor ingrese su Nombre");
-                                String nombrecliente = scanadmin.next();
-                                cliente.setNom(nombrecliente);
 
-                                ((Cliente) cliente).comprarForfait();
-                                clientes.add(cliente);
+                                String nombrecliente = scanadmin.next();
+                                Pattern pat = Pattern.compile("([a-z]+)");
+                                Matcher mat = pat.matcher(nombrecliente);
+                                if (mat.find()) {
+                                    cliente.setNom(nombrecliente);
+
+                                    ((Cliente) cliente).comprarForfait();
+                                    clientes.add(cliente);
+                                } else {
+                                    System.out.println("Nombre no Válido");
+                                }
+
                                 break;
 
                             case 2 :
@@ -200,7 +243,9 @@ public class Main {
                                         case 2:
                                             ((Monitor) monitor).crearClase();
                                             break;
-                                        default: exitmonitor = true;
+                                        default:
+                                            System.out.println("hola");
+                                            exitmonitor = true;
                                     }
                                 }
                                 clases.add(((Monitor) monitor).crearClase());

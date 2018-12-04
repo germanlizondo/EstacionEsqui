@@ -31,7 +31,8 @@ public class Telesilla {
         this.capacidad = capacidad;
         this.consumo = consumo;
         this.encendido = false;
-
+        this.Id = Idsiguiente;
+        Idsiguiente++;
 
     }
 
